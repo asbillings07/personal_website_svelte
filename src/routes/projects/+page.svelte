@@ -135,3 +135,57 @@
 		</div>
 	</div>
 </div> -->
+
+<style>
+		/* Projects */
+	/* .card,
+	.card-img-top {
+		border-radius: 0;
+	}
+	.card-title,
+	.card-text {
+		color: var(--dkgray);
+	}
+	.card-title a {
+		color: var(--dkgray);
+		transition: all ease-in-out 300ms;
+	}
+	.card-title a:active,
+	.card-title a:hover,
+	.card-title a:focus {
+		color: var(--blue);
+		transition: all ease-in-out 300ms;
+	}
+	.card img {
+		filter: grayscale(1);
+		transition: 400ms;
+	}
+	.card img:hover {
+		filter: grayscale(0);
+		transition: 400ms;
+	}
+	@media (min-width: 768px) and (max-width: 991px) {
+		.card-body {
+			min-height: 200px;
+		}
+	}
+	@media (min-width: 992px) {
+		.card-body {
+			min-height: 165px;
+		}
+	}
+	.list-group-flush .list-group-item {
+		padding: 5px 0px !important;
+	}
+	.breadcrumb .breadcrumb-item {
+		text-transform: uppercase;
+		color: var(--mdgray);
+		font-size: 14px;
+	}
+	.breadcrumb-item + .breadcrumb-item::before {
+		color: var(--mdgray);
+	}
+	.proj-img {
+		border: solid 1px #dee2e6;
+	}
+</style>
