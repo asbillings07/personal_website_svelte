@@ -1,68 +1,9 @@
 <script lang="ts">
-	import { getCldImageUrl } from 'svelte-cloudinary';
-	const getUrl = (image: string) => {
-		return getCldImageUrl({
-			width: 960,
-			height: 600,
-			src: `personal_website/${image}`
-		});
-	};
+	import Nav from '../components/Nav.svelte';
 </script>
 
 <div class="container">
-	<nav class="navbar navbar-expand-lg mb-4">
-		<a class="navbar-brand" href="index.html">
-			<div class="ab-logo" style={`background: url(${getUrl('logo')}) no-repeat;`}></div>
-		</a>
-		<button
-			class="navbar-toggler"
-			type="button"
-			data-bs-toggle="offcanvas"
-			data-bs-target="#offcanvasNavbar"
-			aria-controls="offcanvasNavbar"
-		>
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div
-			class="offcanvas offcanvas-end"
-			tabindex="-1"
-			id="offcanvasNavbar"
-			aria-labelledby="offcanvasNavbarLabel"
-		>
-			<div class="offcanvas-header">
-				<h5 class="offcanvas-title" id="offcanvasNavbarLabel">Aaron Billings</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"
-				></button>
-			</div>
-			<div class="offcanvas-body justify-content-end">
-				<ul class="nav nav-icons justify-content-sm-start me-4">
-					<li class="nav-item">
-						<a class="nav-link ps-0 pe-0" href="https://github.com/asbillings07" target="_blank"
-							><i class="bi bi-github"></i></a
-						>
-					</li>
-					<li class="nav-item">
-						<a
-							class="nav-link pe-0"
-							href="https://www.linkedin.com/in/aaron-billings-9b429610a/"
-							target="_blank"><i class="bi bi-linkedin"></i></a
-						>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link pe-0" href="https://abdevelops.medium.com/" target="_blank"
-							><i class="bi bi-medium"></i></a
-						>
-					</li>
-				</ul>
-				<ul class="navbar-nav justify-content-end nav-underline">
-					<li class="nav-item"><a class="nav-link" aria-current="page" href="/">HOME</a></li>
-					<li class="nav-item"><a class="nav-link active" href="/projects">PROJECTS</a></li>
-					<li class="nav-item"><a class="nav-link" href="/resume">EXPERIENCE</a></li>
-					<li class="nav-item"><a class="nav-link" href="/contact">CONTACT</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+	<Nav />
 	<!-- /navbar -->
 
 	<slot></slot>
@@ -344,13 +285,7 @@
 	}
 
 	.container {
-		--bs-gutter-x: 1.5rem;
-		--bs-gutter-y: 0;
-		width: 100%;
-		padding-right: calc(var(--bs-gutter-x) * 0.5);
-		padding-left: calc(var(--bs-gutter-x) * 0.5);
-		margin-right: auto;
-		margin-left: auto;
+		margin: auto;
 	}
 
 	.p-4 {
