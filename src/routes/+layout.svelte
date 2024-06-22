@@ -1,71 +1,81 @@
-<!-- Begin navbar -->
-<nav class="navbar navbar-expand-lg mb-4">
-	<a class="navbar-brand" href="index.html">
-		<div class="ab-logo"></div>
-	</a>
-	<button
-		class="navbar-toggler"
-		type="button"
-		data-bs-toggle="offcanvas"
-		data-bs-target="#offcanvasNavbar"
-		aria-controls="offcanvasNavbar"
-	>
-		<span class="navbar-toggler-icon"></span>
-	</button>
-	<div
-		class="offcanvas offcanvas-end"
-		tabindex="-1"
-		id="offcanvasNavbar"
-		aria-labelledby="offcanvasNavbarLabel"
-	>
-		<div class="offcanvas-header">
-			<h5 class="offcanvas-title" id="offcanvasNavbarLabel">Aaron Billings</h5>
-			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"
-			></button>
-		</div>
-		<div class="offcanvas-body justify-content-end">
-			<ul class="nav nav-icons justify-content-sm-start me-4">
-				<li class="nav-item">
-					<a class="nav-link ps-0 pe-0" href="https://github.com/asbillings07" target="_blank"
-						><i class="bi bi-github"></i></a
-					>
-				</li>
-				<li class="nav-item">
-					<a
-						class="nav-link pe-0"
-						href="https://www.linkedin.com/in/aaron-billings-9b429610a/"
-						target="_blank"><i class="bi bi-linkedin"></i></a
-					>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link pe-0" href="https://abdevelops.medium.com/" target="_blank"
-						><i class="bi bi-medium"></i></a
-					>
-				</li>
-			</ul>
-			<ul class="navbar-nav justify-content-end nav-underline">
-				<li class="nav-item"><a class="nav-link" aria-current="page" href="/">HOME</a></li>
-				<li class="nav-item"><a class="nav-link active" href="/projects">PROJECTS</a></li>
-				<li class="nav-item"><a class="nav-link" href="/resume">EXPERIENCE</a></li>
-				<li class="nav-item"><a class="nav-link" href="/contact">CONTACT</a></li>
-			</ul>
-		</div>
-	</div>
-</nav>
-<!-- /navbar -->
+<script lang="ts">
+	import { getCldImageUrl } from 'svelte-cloudinary';
+	const getUrl = (image: string) => {
+		return getCldImageUrl({
+			width: 960,
+			height: 600,
+			src: `personal_website/${image}`
+		});
+	};
+</script>
 
-<slot></slot>
+<div class="container">
+	<nav class="navbar navbar-expand-lg mb-4">
+		<a class="navbar-brand" href="index.html">
+			<div class="ab-logo" style={`background: url(${getUrl('logo')}) no-repeat;`}></div>
+		</a>
+		<button
+			class="navbar-toggler"
+			type="button"
+			data-bs-toggle="offcanvas"
+			data-bs-target="#offcanvasNavbar"
+			aria-controls="offcanvasNavbar"
+		>
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div
+			class="offcanvas offcanvas-end"
+			tabindex="-1"
+			id="offcanvasNavbar"
+			aria-labelledby="offcanvasNavbarLabel"
+		>
+			<div class="offcanvas-header">
+				<h5 class="offcanvas-title" id="offcanvasNavbarLabel">Aaron Billings</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"
+				></button>
+			</div>
+			<div class="offcanvas-body justify-content-end">
+				<ul class="nav nav-icons justify-content-sm-start me-4">
+					<li class="nav-item">
+						<a class="nav-link ps-0 pe-0" href="https://github.com/asbillings07" target="_blank"
+							><i class="bi bi-github"></i></a
+						>
+					</li>
+					<li class="nav-item">
+						<a
+							class="nav-link pe-0"
+							href="https://www.linkedin.com/in/aaron-billings-9b429610a/"
+							target="_blank"><i class="bi bi-linkedin"></i></a
+						>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link pe-0" href="https://abdevelops.medium.com/" target="_blank"
+							><i class="bi bi-medium"></i></a
+						>
+					</li>
+				</ul>
+				<ul class="navbar-nav justify-content-end nav-underline">
+					<li class="nav-item"><a class="nav-link" aria-current="page" href="/">HOME</a></li>
+					<li class="nav-item"><a class="nav-link active" href="/projects">PROJECTS</a></li>
+					<li class="nav-item"><a class="nav-link" href="/resume">EXPERIENCE</a></li>
+					<li class="nav-item"><a class="nav-link" href="/contact">CONTACT</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- /navbar -->
+
+	<slot></slot>
+</div>
 
 <div class="container">
 	<footer>
 		<div class="row sticky-bottom">
 			<div class="col d-flex justify-content-end">
 				<p>
-					&copy; <script>
-						document.write(new Date().getFullYear());
-					</script>
-					by Aaron Billings. My <a href="https://akbgraphicdesign.com" target="_blank">wife</a> helped
-					with the design a little.
+					&copy;
+					{new Date().getFullYear()} by Aaron Billings. My
+					<a href="https://akbgraphicdesign.com" target="_blank">wife</a> helped with the design a little.
 				</p>
 			</div>
 		</div>
@@ -83,8 +93,112 @@
 		--dkblue: #3b80a3;
 		--heading: 'Space Mono', monospace;
 		--paragraph: 'Inter', sans-serif;
+		-bs-navbar-padding-x: 0;
+		--bs-navbar-padding-y: 0.5rem;
+		--bs-navbar-color: rgba(var(--bs-emphasis-color-rgb), 0.65);
+		--bs-navbar-hover-color: rgba(var(--bs-emphasis-color-rgb), 0.8);
+		--bs-navbar-disabled-color: rgba(var(--bs-emphasis-color-rgb), 0.3);
+		--bs-navbar-active-color: rgba(var(--bs-emphasis-color-rgb), 1);
+		--bs-navbar-brand-padding-y: 0.3125rem;
+		--bs-navbar-brand-margin-end: 1rem;
+		--bs-navbar-brand-font-size: 1.25rem;
+		--bs-navbar-brand-color: rgba(var(--bs-emphasis-color-rgb), 1);
+		--bs-navbar-brand-hover-color: rgba(var(--bs-emphasis-color-rgb), 1);
+		--bs-navbar-nav-link-padding-x: 0.5rem;
+		--bs-navbar-toggler-padding-y: 0.25rem;
+		--bs-navbar-toggler-padding-x: 0.75rem;
+		--bs-navbar-toggler-font-size: 1.25rem;
+		--bs-navbar-toggler-icon-bg: url('data:image/svg + xml,%3csvgxmlns=http://www.w3.org/2000/svgviewBox=0 0 30 30%3e%3cpathstroke=rgba%2833, 37, 41, 0.75%29stroke-linecap=roundstroke-miterlimit=10stroke-width=2d=M4 7h22M4 15h22M4 23h22/%3e%3c/svg%3e');
+		--bs-navbar-toggler-border-color: rgba(var(--bs-emphasis-color-rgb), 0.15);
+		--bs-navbar-toggler-border-radius: var(--bs-border-radius);
+		--bs-navbar-toggler-focus-width: 0.25rem;
+		--bs-navbar-toggler-transition: box-shadow 0.15s ease-in-out;
+		--bs-blue: #0d6efd;
+		--bs-indigo: #6610f2;
+		--bs-purple: #6f42c1;
+		--bs-pink: #d63384;
+		--bs-red: #dc3545;
+		--bs-orange: #fd7e14;
+		--bs-yellow: #ffc107;
+		--bs-green: #198754;
+		--bs-teal: #20c997;
+		--bs-cyan: #0dcaf0;
+		--bs-black: #000;
+		--bs-white: #fff;
+		--bs-gray: #6c757d;
+		--bs-gray-dark: #343a40;
+		--bs-gray-100: #f8f9fa;
+		--bs-gray-200: #e9ecef;
+		--bs-gray-300: #dee2e6;
+		--bs-gray-400: #ced4da;
+		--bs-gray-500: #adb5bd;
+		--bs-gray-600: #6c757d;
+		--bs-gray-700: #495057;
+		--bs-gray-800: #343a40;
+		--bs-gray-900: #212529;
+		--bs-primary: #0d6efd;
+		--bs-secondary: #6c757d;
+		--bs-success: #198754;
+		--bs-info: #0dcaf0;
+		--bs-warning: #ffc107;
+		--bs-danger: #dc3545;
+		--bs-light: #f8f9fa;
+		--bs-dark: #212529;
+		--bs-primary-rgb: 13, 110, 253;
+		--bs-secondary-rgb: 108, 117, 125;
+		--bs-success-rgb: 25, 135, 84;
+		--bs-info-rgb: 13, 202, 240;
+		--bs-warning-rgb: 255, 193, 7;
+		--bs-danger-rgb: 220, 53, 69;
+		--bs-light-rgb: 248, 249, 250;
+		--bs-dark-rgb: 33, 37, 41;
+		--bs-primary-text-emphasis: #052c65;
+		--bs-secondary-text-emphasis: #2b2f32;
+		--bs-success-text-emphasis: #0a3622;
+		--bs-info-text-emphasis: #055160;
+		--bs-warning-text-emphasis: #664d03;
+		--bs-danger-text-emphasis: #58151c;
+		--bs-light-text-emphasis: #495057;
+		--bs-dark-text-emphasis: #495057;
+		--bs-primary-bg-subtle: #cfe2ff;
+		--bs-secondary-bg-subtle: #e2e3e5;
+		--bs-success-bg-subtle: #d1e7dd;
 	}
 	/* Global */
+
+	.navbar-brand {
+		padding-top: var(--bs-navbar-brand-padding-y);
+		padding-bottom: var(--bs-navbar-brand-padding-y);
+		margin-right: var(--bs-navbar-brand-margin-end);
+		font-size: var(--bs-navbar-brand-font-size);
+		color: var(--bs-navbar-brand-color);
+		text-decoration: none;
+		white-space: nowrap;
+	}
+
+	.navbar {
+		position: relative;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		padding: var(--bs-navbar-padding-y) var(--bs-navbar-padding-x);
+	}
+
+	.mb-4 {
+		margin-bottom: 1.5rem;
+	}
+
+	.navbar-toggler {
+		padding: var(--bs-navbar-toggler-padding-y) var(--bs-navbar-toggler-padding-x);
+		font-size: var(--bs-navbar-toggler-font-size);
+		line-height: 1;
+		color: var(--bs-navbar-color);
+		background-color: transparent;
+		border: var(--bs-border-width) solid var(--bs-navbar-toggler-border-color);
+		border-radius: var(--bs-navbar-toggler-border-radius);
+		transition: var(--bs-navbar-toggler-transition);
+	}
 
 	body {
 		background: url('img/bg.jpg') no-repeat fixed center;
@@ -192,7 +306,6 @@
 	.ab-logo {
 		height: 60px;
 		width: 150px;
-		background: url('img/logo.svg') no-repeat;
 		display: inline-block;
 		transition: all 0.6s;
 	}
@@ -200,14 +313,14 @@
 		background: url('img/logo-flip.svg') no-repeat;
 	}
 	.nav-icons li a i {
-		transistion: 800ms;
+		transition: 800ms;
 		color: var(--mdgray);
 	}
 	.nav-icons li a i:hover,
 	.nav-icons li a i:active,
 	.nav-icons li a i:focus {
 		color: var(--blue);
-		transistion: 800ms;
+		transition: 800ms;
 	}
 	.nav-link {
 		color: var(--dkgray);
@@ -229,101 +342,27 @@
 		padding-left: 0;
 		padding-right: 0;
 	}
-	/* Projects */
-	.card,
-	.card-img-top {
-		border-radius: 0;
+
+	.container {
+		--bs-gutter-x: 1.5rem;
+		--bs-gutter-y: 0;
+		width: 100%;
+		padding-right: calc(var(--bs-gutter-x) * 0.5);
+		padding-left: calc(var(--bs-gutter-x) * 0.5);
+		margin-right: auto;
+		margin-left: auto;
 	}
-	.card-title,
-	.card-text {
-		color: var(--dkgray);
+
+	.p-4 {
+		padding: 1.5rem !important;
 	}
-	.card-title a {
-		color: var(--dkgray);
-		transition: all ease-in-out 300ms;
-	}
-	.card-title a:active,
-	.card-title a:hover,
-	.card-title a:focus {
-		color: var(--blue);
-		transition: all ease-in-out 300ms;
-	}
-	.card img {
-		filter: grayscale(1);
-		transition: 400ms;
-	}
-	.card img:hover {
-		filter: grayscale(0);
-		transition: 400ms;
-	}
-	@media (min-width: 768px) and (max-width: 991px) {
-		.card-body {
-			min-height: 200px;
+
+	@media (min-width: 768px) {
+		.container {
+			max-width: 720px;
 		}
 	}
-	@media (min-width: 992px) {
-		.card-body {
-			min-height: 165px;
-		}
-	}
-	.list-group-flush .list-group-item {
-		padding: 5px 0px !important;
-	}
-	.breadcrumb .breadcrumb-item {
-		text-transform: uppercase;
-		color: var(--mdgray);
-		font-size: 14px;
-	}
-	.breadcrumb-item + .breadcrumb-item::before {
-		color: var(--mdgray);
-	}
-	.proj-img {
-		border: solid 1px #dee2e6;
-	}
-	/* Resume */
-	.nav-pills {
-		--bs-nav-pills-border-radius: 0;
-		--bs-nav-pills-link-active-color: var(--dkgray);
-		--bs-nav-pills-link-active-bg: #fafafa;
-		text-transform: uppercase;
-		font-family: var(--heading);
-		text-align: left;
-	}
-	.nav-pills .nav-link {
-		padding: 15px 20px;
-	}
-	.nav-pills .nav-link:focus,
-	.nav-pills .nav-link:hover {
-		color: var(--blue);
-	}
-	.list-group-flush .list-group-item {
-		background-color: transparent;
-		font-family: 'Space Mono', monospace;
-		text-transform: uppercase;
-		border-bottom: 0;
-		padding: 5px 16px;
-	}
-	.work-icon {
-		transition: all 400ms;
-	}
-	.work-icon:hover {
-		transform: translate(3px, -3px);
-		transition: all 400ms;
-	}
-	/* Contact page */
-	.form-control {
-		border-radius: 0;
-	}
-	.form-control:focus {
-		border-color: var(--blue);
-	}
-	.form-floating > .form-control-plaintext ~ label,
-	.form-floating > .form-control:focus ~ label,
-	.form-floating > .form-control:not(:placeholder-shown) ~ label,
-	.form-floating > .form-select ~ label {
-		text-transform: uppercase;
-		color: var(--mdgray);
-	}
+
 	/* Footer */
 	footer {
 		font-size: 12px;
