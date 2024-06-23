@@ -1,8 +1,10 @@
 <script lang="ts">
 	import { getCldImageUrl } from 'svelte-cloudinary';
 	import GithubIcon from './Github.svelte';
+	import Logo from './Logo.svelte';
 	import LinkedInIcon from './LinkedIn.svelte';
 	import MediumIcon from './Medium.svelte';
+	import CollapsibleMenu from './CollapsibleMenu.svelte';
 	const getUrl = (image: string) => {
 		return getCldImageUrl({
 			width: 960,
@@ -13,84 +15,68 @@
 	const menus = ['Work', 'Resume', 'Contact'];
 </script>
 
-<nav class="navbar navbar-expand-lg mb-4">
+<nav class="navbar">
 	<a class="navbar-brand" href="/">
-		<div class="ab-logo" style={`background: url(${getUrl('logo')}) no-repeat;`}></div>
-	</a>
-	<button
-		class="navbar-toggler"
-		type="button"
-		data-bs-toggle="offcanvas"
-		data-bs-target="#offcanvasNavbar"
-		aria-controls="offcanvasNavbar"
-	>
-		<span class="navbar-toggler-icon"></span>
-	</button>
-	<div
-		class="offcanvas offcanvas-end"
-		tabindex="-1"
-		id="offcanvasNavbar"
-		aria-labelledby="offcanvasNavbarLabel"
-	>
-		<div class="offcanvas-header">
-			<h5 class="offcanvas-title" id="offcanvasNavbarLabel">Aaron Billings</h5>
-			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"
-			></button>
+		<div class="ab-logo">
+			<Logo />
 		</div>
-		<div class="menu-items">
-			<ul class="nav nav-icons justify-content-sm-start me-4">
-				<li class="nav-item">
-					<a class="nav-link ps-0 pe-0" href="https://github.com/asbillings07" target="_blank"
-						><GithubIcon /></a
-					>
-				</li>
-				<li class="nav-item">
-					<a
-						class="nav-link pe-0"
-						href="https://www.linkedin.com/in/aaron-billings-9b429610a/"
-						target="_blank"><LinkedInIcon /></a
-					>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link pe-0" href="https://abdevelops.medium.com/" target="_blank"
-						><MediumIcon /></a
-					>
-				</li>
-			</ul>
+	</a>
+
+	<div class="menu-items">
+		<ul class="nav nav-icons">
+			<li class="nav-item">
+				<a class="nav-link ps-0 pe-0" href="https://github.com/asbillings07" target="_blank"
+					><GithubIcon /></a
+				>
+			</li>
+			<li class="nav-item">
+				<a
+					class="nav-link pe-0"
+					href="https://www.linkedin.com/in/aaron-billings-9b429610a/"
+					target="_blank"><LinkedInIcon /></a
+				>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link pe-0" href="https://abdevelops.medium.com/" target="_blank"
+					><MediumIcon /></a
+				>
+			</li>
+		</ul>
+		<CollapsibleMenu>
 			<div class="menu-container">
 				{#each menus as menu}
 					<div class="sub-menu-container">
-						<div class="menu-link">{menu.toUpperCase()}</div>
+						<a href={`/${menu.toLowerCase() === 'work' ? 'projects' : menu.toLowerCase()}`}>
+							<div class="menu-link">{menu.toUpperCase()}</div>
+						</a>
+
 						<div class="menu-border"></div>
 					</div>
 				{/each}
 			</div>
-		</div>
+		</CollapsibleMenu>
 	</div>
 </nav>
 
 <style>
+	.navbar {
+		display: flex;
+		justify-content: space-between;
+		padding: 15px;
+	}
+	.navbar-brand {
+		padding-top: 25px;
+	}
 	ul {
 		list-style-type: none;
 		padding: 0;
 	}
 	.menu-items {
 		display: flex;
-		padding: 10.5px 2px 10.5px 213px;
-		justify-content: flex-end;
-		align-items: flex-start;
-		gap: 35px;
 	}
 
 	.menu-container {
-		width: 100%;
-		height: 100%;
-		padding-top: 10.5px;
-		padding-bottom: 10.5px;
-		padding-left: 213px;
-		padding-right: 2px;
-		justify-content: flex-end;
-		align-items: flex-start;
+		padding: 25px;
 		gap: 35px;
 		display: inline-flex;
 	}
@@ -126,6 +112,11 @@
 	}
 	.ab-logo:hover {
 		background: url('img/logo-flip.svg') no-repeat;
+	}
+
+	.nav {
+		display: flex;
+		align-items: center;
 	}
 	.nav-icons li a i {
 		transition: 800ms;
