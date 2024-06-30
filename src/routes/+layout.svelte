@@ -1,5 +1,21 @@
 <script lang="ts">
 	import Nav from '../components/Nav.svelte';
+	import { onMount } from 'svelte';
+	import { getCldImageUrl } from 'svelte-cloudinary';
+	const getUrl = (image: string) => {
+		return getCldImageUrl({
+			width: 960,
+			height: 600,
+			src: `personal_website/${image}`
+		});
+	};
+	onMount(() => {
+		const bg_image = getUrl('bg_image');
+		const body = document.querySelector('body');
+		if (body) {
+			body.style.background = `url(${bg_image}) no-repeat fixed center`;
+		}
+	});
 </script>
 
 <div class="container">
@@ -123,7 +139,7 @@
 	}
 
 	:global(body) {
-		background: url('img/bg.jpg') no-repeat fixed center;
+		background: url() no-repeat fixed center;
 		background-size: cover;
 		color: var(--dkgray);
 		font-size: 16px;
@@ -231,9 +247,9 @@
 		display: inline-block;
 		transition: all 0.6s;
 	}
-	.ab-logo:hover {
+	/* .ab-logo:hover {
 		background: url('img/logo-flip.svg') no-repeat;
-	}
+	} */
 	.nav-icons li a i {
 		transition: 800ms;
 		color: var(--mdgray);
